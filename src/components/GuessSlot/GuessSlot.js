@@ -1,17 +1,17 @@
 import React from 'react';
+import { range } from '../../utils';
 
-function GuessSlot({GuessWord}) {
+function GuessSlot({guessWord = ''}) { 
   return (
-    <p 
-      key={crypto.randomUUID()}  
+    <p   
       className="guess">
-      <span className="cell">{GuessWord.substring(0,1)}</span>
-      <span className="cell">{GuessWord.substring(1,2)}</span>
-      <span className="cell">{GuessWord.substring(2,3)}</span>
-      <span className="cell">{GuessWord.substring(3,4)}</span>
-      <span className="cell">{GuessWord.substring(4,5)}</span>
+        {range(5).map((index) => (
+          <span key={index} className="cell">
+            {guessWord ? guessWord[index] : ''}
+          </span>
+        ))}
     </p>
   );
-}
+} 
 
 export default GuessSlot;
